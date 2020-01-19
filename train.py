@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import tensorflow as tf
 import numpy as np
 
@@ -9,7 +7,7 @@ from utils import decode_sparse_tensor, sparse_tuple_from, report_accuracy
 
 DATA_FOLDER = './train'
 BATCH_SIZE = 40
-NUM_EPOCHES = 100
+NUM_EPOCHES = 200
 REPORT_EPOCHES = 5
 
 INITIAL_LEARNING_RATE = 1e-3
@@ -51,7 +49,8 @@ def main():
 
     with tf.Session() as session:
         session.run(init)
-        saver = tf.train.Saver(tf.global_variables(), max_to_keep=100)
+        saver = tf.train.Saver(tf.global_variables(), max_to_keep=10)
+        saver.restore(session, 'saved_models/model-2382')
         for curr_epoch in range(NUM_EPOCHES):
             print("Epoch.......", curr_epoch)
             train_cost = 0

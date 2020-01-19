@@ -1,11 +1,23 @@
-# coding: utf-8
-
 import tensorflow as tf
+import 
 
 from captcha_generator import CAPTCHA_SIZE, CHARSET
 
 NUM_CLASSES = len(CHARSET) + 1
 LSTM_LAYERS = [128, 128]
+
+class Model:
+    
+    __init__(self):
+        self.
+
+    def weight_variable(shape):
+        initial = tf.truncated_normal(shape, stddev=0.5)
+        return tf.Variable(initial)
+
+    def bias_variable(shape):
+        initial = tf.constant(0.1, shape=shape)
+        return tf.Variable(initial)
 
 def weight_variable(shape):
     initial = tf.truncated_normal(shape, stddev=0.5)

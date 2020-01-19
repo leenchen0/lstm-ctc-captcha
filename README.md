@@ -9,9 +9,17 @@
 - numpy 1.16.2
 - Pillow 5.4.1
 
-## 验证码生成
+## 运行
 
-运行 `captcha_generator.py` 生成验证码(代码参考了[python生成图片验证码 - huangql517的博客 - CSDN博客](https://blog.csdn.net/huangql517/article/details/81508912))
+### 依赖安装
+
+```shell
+pip install -r requirements.txt
+```
+
+### 验证码生成
+
+运行 `generate_captcha.py` 生成验证码(代码参考了[python生成图片验证码 - huangql517的博客 - CSDN博客](https://blog.csdn.net/huangql517/article/details/81508912))
 
 可以通过修改相关变量配置生成验证码规则：
 
@@ -23,26 +31,28 @@
 |FONT|字体文件, 项目文件夹 `fonts\` 下有几种字体|
 |FONT_SIZE|字体大小|
 |CAPTCHA_NOISE_POINT|是否加入点噪音|
-|CAPTCHA_NOISE_LINE| 是否加入线噪音|
-|NUM_CAPTCHA|生成数量|
-|SAVE_FOLDER|验证码保存路径|
-|CLEAR_BEFORE_CREATE|生成前是否删除原有文件夹下图片|
+|CAPTCHA_NOISE_LINE|是否加入线噪音|
+|TRAIN_DATA_FOLDER|生成训练数据的保存文件夹|
+|TEST_DATA_FOLDER|生成测试数据的保存文件夹|
+|TRAIN_SIZE|训练集大小|
+|TEST_SIZE|测试集大小|
+|DELETE_ALL_BEFORE_CREATE|生成前是否删除原有文件夹下图片|
 
-### 样例：
+#### 验证码样例：
 
 | ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/8925.png)| ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/672362.png) | ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/32847456.png) |
 |--|--|--|
 | ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/0170.png)| ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/93667.png) | ![captcha](https://github.com/PencilCl/lstm-ctc-captcha/blob/master/captcha/3285170.png) |
 
-## 模型测试
+### 模型训练
+
+运行 `train_model.py` 可以重新训练模型。`trained_model` 下的模型即使用该文件中的配置训练，训练验证码数量为 8k。
+
+### 模型测试
 
 `trained_model` 下包含一个训练好的模型，可以直接用来测试。随机生成 1000 张验证码识别精度为 99.3%。
 
 运行 `test_model.py` 进行模型测试，需要设置 `DATA_FOLDER` 为验证码文件夹。
-
-## 模型训练
-
-运行 `train_model.py` 可以重新训练模型。`trained_model` 下的模型即使用该文件中的配置训练，训练验证码数量为 8k。
 
 ## 网络结构
 
